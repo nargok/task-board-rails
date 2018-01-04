@@ -42,3 +42,24 @@ User.create!(
 	given_name_kana: 'シロウ',
 )
 
+
+Todo.create!(
+	name: 'Task1',
+	status: 1,
+	assignee: 'Taro Yamada',
+	mandays: 3
+)
+
+Todo.create!(
+	name: 'Task2',
+	status: 2,
+	assignee: 'Jiro Kamiyama',
+	mandays: 1
+)
+
+Todo.create!(
+	name: 'Task3',
+	status: 3,
+	assignee: 'Saburo Oda',
+	mandays: 2
+)
