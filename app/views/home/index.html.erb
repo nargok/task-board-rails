@@ -1,2 +1,47 @@
+<section class="section" id="board">
+    <div class="container">
+      <!-- v-model 対応するVueインスタンスのデータを指定する フォームの値の変更をVueインスタンス内に反映する -->
+      <input type="text" v-model="newTaskName" placeholder="Task name"/>
+      <select v-model="newTaskAssignee">
+        <option value="Taro">Taro</option>
+        <option value="Jiro">Jiro</option>
+        <option value="Sabro">Taro</option>
+        <option value="Shiro">Shiro</option>
+      </select>
+      <input type="number"  v-model="newTaskMandays" placeholder="Mondays"/>
+      <button @click="addTask">追加</button>
+      <hr>
+      <div class="columns">
+        <div class="column status-1">
+          <div class="tags has-addons">
+            <span class="tag">未対応</span>
+            <span class="tag is-dark">{{ tasksOpen.length }}</span>
+          </div>
+          <transition-group name="fade">
+            <!-- v-vind:task="task"でtask-cardのpropsへtaskのデータを渡す -->
+            <task-card v-bind:task="task" v-for="task in tasksOpen":key="task.name"></task-card>
+          </transition-group>
+        </div>
+        <div class="column status-2">
+          <div class="tags has-addons">
+            <span class="tag">処理中</span>
+            <span class="tag is-dark">{{ tasksDoing.length }}</span>
+          </div>
+          <transition-group name="fade">
+            <task-card v-bind:task="task" v-for="task in tasksDoing":key="task.name"></task-card>
+          </transition-group>
+        </div>
+        <div class="column status-3">
+          <div class="tags has-addons">
+            <span class="tag">完了</span>
+            <span class="tag is-dark">{{ tasksClosed.length }}</span>
+          </div>
+          <transition-group name="fade">
+            <task-card v-bind:task="task" v-for="task in tasksClosed":key="task.name"></task-card>
+          </transition-group>
+        </div>
+      </div>
+    </div>
+  </section>  
 
-
+<%= javascript_pack_tag  'todo' %>
